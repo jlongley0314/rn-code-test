@@ -1,25 +1,26 @@
 import React from 'react';
-import { SafeAreaView, Text, Linking, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { SafeAreaView } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 
-const Info = () => (
-  <SafeAreaView>
-    <Text>Follow the instructions in the README file at:</Text>
-    <Text
-      style={styles.link}
-      onPress={() => {
-        Linking.openURL(
-          'https://github.com/mypthub/rn-code-test/blob/master/README.md',
-        );
-      }}>
-      https://github.com/mypthub/rn-code-test/blob/master/README.md
-    </Text>
-  </SafeAreaView>
-);
+export function Info(props) {
+  Info.propTypes = {
+    products: array,
+  };
 
-const styles = StyleSheet.create({
-  link: {
-    color: 'blue',
-  },
-});
+  const { products } = props;
 
-export default Info;
+  return (
+    <SafeAreaView>
+      
+    </SafeAreaView>
+  )
+}
+
+export function mapStateToProps(state) {
+  return {
+    products: state.appState.products,
+  };
+}
+
+export default connect(mapStateToProps)(Info);

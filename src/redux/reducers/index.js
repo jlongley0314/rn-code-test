@@ -1,11 +1,11 @@
 import { UPDATE_ACTIVE_PRODUCT, UPDATE_PRODUCTS } from '../actions'
 
-const productInitialState = {
+const appInitialState = {
     activeProduct: undefined,
     products: [],
 };
 
-const rootReducer = (state = productInitialState, action) => {
+const appState = (state = appInitialState, action) => {
     switch (action.type) {
         case (UPDATE_ACTIVE_PRODUCT):
             return Object.assign({}, state, {
@@ -20,4 +20,4 @@ const rootReducer = (state = productInitialState, action) => {
     }
 };
 
-export default rootReducer;
+export default appState;
