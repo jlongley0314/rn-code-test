@@ -1,17 +1,18 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/pages/Home';
 import { applyMiddleware, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga';
-import rootReducer from './src/redux/reducers'
+import appState from './src/redux/reducers'
 import rootSaga from './src/sagas';
 
 export function App() {
   const sagaMiddleware = createSagaMiddleware()
   const store = createStore(
-    rootReducer,
+    appState,
     applyMiddleware(sagaMiddleware)
   )
   sagaMiddleware.run(rootSaga)
@@ -24,10 +25,12 @@ export function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-      <Home />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar barStyle="dark-content" />
+        <Home />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

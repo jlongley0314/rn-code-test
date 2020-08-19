@@ -1,11 +1,11 @@
 import { UPDATE_ACTIVE_PRODUCT, UPDATE_PRODUCTS } from '../actions'
 
-const appInitialState = {
+const initialState = {
     activeProduct: undefined,
     products: [],
 };
 
-const appState = (state = appInitialState, action) => {
+const appState = (state = initialState, action) => {
     switch (action.type) {
         case (UPDATE_ACTIVE_PRODUCT):
             return Object.assign({}, state, {
@@ -17,7 +17,7 @@ const appState = (state = appInitialState, action) => {
             });
         default:
             return state;
-    }
+    };
 };
 
 export default appState;

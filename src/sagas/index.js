@@ -2,7 +2,7 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import mockProducts from '../../assets/products.json';
 
 function* fetchProducts() {
-  const products = JSON.stringify(mockProducts);
+  const products = mockProducts;
   if (products) {
     yield put({
       type: 'UPDATE_PRODUCTS',
