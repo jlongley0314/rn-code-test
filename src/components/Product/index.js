@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { object } from 'prop-types';
 import { Image, StyleSheet, View } from 'react-native';
+import InfoBar from './info_bar';
 
 
 export function Product(props) {
@@ -18,17 +19,21 @@ export function Product(props) {
             }}
             style={styles.image}  
           />
-          <View style={styles.infoBar}>
-
-          </View>
+          <InfoBar
+            description={product.short_description}
+            discount={product.discount}
+            discountType={product.discount_type}
+            name={product.name}
+            price={product.price}
+          />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
   product: {
-    height: 150,
-    width: 200,
+    height: 281.25,
+    width: 375,
     margin: 10,
   },
   image: {
@@ -36,15 +41,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     aspectRatio: 4/3,
   },
-  infoBar: {
-    position: 'absolute',
-    bottom: 0,
-    height: 30,
-    width: 200,
-    backgroundColor: 'black',
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-  }
 });
 
 export default Product;
