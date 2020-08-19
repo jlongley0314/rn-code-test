@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { string } from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export function InfoBar(props) {
     InfoBar.propTypes = {
@@ -23,7 +24,7 @@ export function InfoBar(props) {
               {(price / 100).toFixed(2)}
             </Text>
             <Text style={styles.productText}>
-              {(price === 0) ? 'Free' : discountedPrice.toFixed(2)}
+              {(discountedPrice === 0) ? 'Free' : discountedPrice.toFixed(2)}
             </Text>
           </View>
         )
@@ -40,11 +41,19 @@ export function InfoBar(props) {
                 }
                 <Text style={{ color: 'rgb(154, 154, 154)' }}>{description}</Text>
             </View>
+            <View style={styles.infoBarRight}>
+                <MaterialIcons name={'account-circle'} size={30} color={'white'} />
+            </View>
           </View>
       );
 };
 
 const styles = StyleSheet.create({
+    avatarImage: {
+        height: 30,
+        width: 30,
+        borderRadius: 15,
+    },
     discountText: {
         textDecorationLine: 'line-through',
         textDecorationStyle: 'solid',
@@ -62,17 +71,20 @@ const styles = StyleSheet.create({
         padding: 10,
         overflow: 'hidden',
         display: 'flex',
+        flexDirection: 'row'
+      },
+    infoBarLeft: {
+        display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignContent: 'center'
-      },
-      infoBarLeft: {
-
-      },
-      productText: {
+        flex: 8,
+    },
+    infoBarRight: {
+        flex: 1,
+    },
+    productText: {
         color: 'white',
-        marginBottom: 5
-,      },
+        marginBottom: 5,
+    },
 })
 
 export default InfoBar;
